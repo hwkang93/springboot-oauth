@@ -1,0 +1,60 @@
+buildscript {
+	ext {
+		queryDslVersion = "4.4.0"
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'hwkang'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '16'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//Springboot Starter
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//Springboot Devtools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	//Lombok
+	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
+
+	//Thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	//jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// QueryDSL
+	implementation ("com.querydsl:querydsl-jpa:${queryDslVersion}")
+	annotationProcessor ("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+	testImplementation ("com.querydsl:querydsl-jpa:${queryDslVersion}")
+	testAnnotationProcessor ("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+
+	//java 9 이상의 버전에서 @Entity 어노테이션 사용시 발생하는 오류 해결
+	implementation("javax.annotation:javax.annotation-api:1.3.2")
+	annotationProcessor("javax.annotation:javax.annotation-api:1.3.2")
+
+	//Spring Security - Oauth
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+}
+
+test {
+	useJUnitPlatform()
+}
