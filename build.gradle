@@ -27,6 +27,8 @@ repositories {
 dependencies {
 	//Springboot Starter
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	//Springboot Devtools
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -53,6 +55,9 @@ dependencies {
 
 	//Spring Security - Oauth
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	//HTTPSession
+	//implementation 'org.springframework.session:spring-session-data-redis'
 }
 
 test {
