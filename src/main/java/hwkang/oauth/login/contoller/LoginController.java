@@ -1,5 +1,6 @@
 package hwkang.oauth.login.contoller;
 
+import hwkang.oauth.config.auth.LoginUser;
 import hwkang.oauth.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,7 @@ public class LoginController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+    public String index(Model model, @LoginUser SessionUser user) {
 
         if(user != null) {
             model.addAttribute("userName", user.getName());
