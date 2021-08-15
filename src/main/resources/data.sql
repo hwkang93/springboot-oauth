@@ -17,3 +17,7 @@ CREATE TABLE posts (
     regist_dt timestamp not null,
     update_dt timestamp
 )
+
+INSERT INTO posts (id, title, contents, regist_email, regist_dt, update_dt) VALUES
+    (1, '게시글1', '내용 내용 내용', 'k72780462@gmail.com', NOW(), NOW());
+
