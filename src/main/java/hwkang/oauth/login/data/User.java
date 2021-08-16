@@ -25,7 +25,7 @@ public class User {
     private String picture;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column
     private Role role;
 
     @Builder

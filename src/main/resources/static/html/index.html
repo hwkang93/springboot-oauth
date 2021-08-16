@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <!--<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+<link href="/css/styles.css" type="text/css" rel="stylesheet" />
 <head>
     <meta charset="UTF-8">
     <title>index</title>
@@ -9,18 +10,18 @@
     <div>
         <span th:text="${userName}"></span>
         <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+
+        <a th:if="${userName != null}" href="/logout" class="btn btn-success active" role="button">Logout</a>
         <table>
-            <thead>
-            <tr>
-                <td>글번호</td>
-                <td>제목</td>
-                <td>등록자 이메일</td>
-                <td>등록일시</td>
-                <td>수정일시</td>
-            </tr>
-            </thead>
             <tbody>
-                <tr th:each="post : ${postList}">
+                <th:block>
+                    <td class="header">글번호</td>
+                    <td class="header">제목</td>
+                    <td class="header">등록자 이메일</td>
+                    <td class="header">등록일시</td>
+                    <td class="header">수정일시</td>
+                </th:block>
+                <tr th:each="post : ${postList}" th:id="${post.id}">
                     <td th:text="${post.id}"></td>
                     <td th:text="${post.title}"></td>
                     <td th:text="${post.registEmail}"></td>
@@ -29,6 +30,9 @@
                 </tr>
             </tbody>
         </table>
+        <div>
+            <button id="registButton" onclick="location.href='/post'">글쓰기</button>
+        </div>
     </div>
 </body>
 </html>

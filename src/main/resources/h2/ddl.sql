@@ -3,7 +3,9 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE users (
     id int primary key,
     name varchar(50) not null,
-    email varchar(100) not null
+    email varchar(100) not null,
+    picture varchar(100),
+    role varchar(10)
 );
 
 CREATE TABLE posts (
