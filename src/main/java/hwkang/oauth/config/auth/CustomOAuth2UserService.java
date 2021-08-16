@@ -5,7 +5,6 @@ import hwkang.oauth.config.auth.dto.SessionUser;
 import hwkang.oauth.login.data.User;
 import hwkang.oauth.login.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;

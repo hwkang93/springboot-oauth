@@ -1,6 +1,6 @@
-package hwkang.post.repository;
+package hwkang.oauth.post.repository;
 
-import hwkang.post.data.PostEntity;
+import hwkang.oauth.post.data.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

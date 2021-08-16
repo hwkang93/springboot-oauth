@@ -9,6 +9,26 @@
     <div>
         <span th:text="${userName}"></span>
         <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+        <table>
+            <thead>
+            <tr>
+                <td>글번호</td>
+                <td>제목</td>
+                <td>등록자 이메일</td>
+                <td>등록일시</td>
+                <td>수정일시</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${postList}">
+                    <td th:text="${post.id}"></td>
+                    <td th:text="${post.title}"></td>
+                    <td th:text="${post.registEmail}"></td>
+                    <td th:text="${post.registDt}"></td>
+                    <td th:text="${post.updateDt}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

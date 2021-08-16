@@ -1,9 +1,13 @@
-package hwkang.post.data;
+package hwkang.oauth.post.data;
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Getter
+@NoArgsConstructor
 public class PostDto {
 
     private Long id;

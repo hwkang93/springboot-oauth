@@ -1,12 +1,14 @@
-package hwkang.post.data;
+package hwkang.oauth.post.data;
 
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "posts")
+@NoArgsConstructor
 public class PostEntity {
 
     @Id
