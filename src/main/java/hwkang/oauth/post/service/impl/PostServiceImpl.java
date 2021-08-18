@@ -44,9 +44,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDto save(PostDto postDto) {
+    public boolean save(PostDto postDto) {
         PostEntity savedEntity = postRepository.save(postDto.toEntity());
 
-        return savedEntity.toDto();
+        return savedEntity != null;
     }
 }

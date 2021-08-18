@@ -12,5 +12,5 @@ public interface PostService {
 
     PostDto findById(Long id);
 
-    PostDto save(PostDto postDto);
+    boolean save(PostDto postDto);
 }
