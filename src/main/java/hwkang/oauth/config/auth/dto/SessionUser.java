@@ -2,6 +2,7 @@ package hwkang.oauth.config.auth.dto;
 
 import hwkang.oauth.login.data.User;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
  *  그래서 직렬화 기능(Serializable)을 가진 세션 Dto를 하나 추가로 만드는 것이 더 좋은 방법이다.
  */
 @Getter
+@ToString
 public class SessionUser implements Serializable {
 
     private String name;

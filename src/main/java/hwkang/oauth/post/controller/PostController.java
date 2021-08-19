@@ -7,9 +7,7 @@ import hwkang.oauth.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/post")
@@ -29,9 +27,15 @@ public class PostController {
     }
 
     @PostMapping
-    public String register(PostDto postDto) {
-        boolean saveResult = postService.save(postDto);
+    public String register(@LoginUser SessionUser sessionUser, @ModelAttribute PostDto postDto) {
+        PostDto paramDto = PostDto.builder()
+                .registEmail(sessionUser.getEmail())
+                .title(postDto.getTitle())
+                .contents(postDto.getContents())
+                .build();
 
-        return "";
+        postService.save(paramDto);
+
+        return "redirect:/";
     }
 }
