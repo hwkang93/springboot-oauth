@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS user;
 
+-- 사용자 테이블
 CREATE TABLE users (
     id int primary key,
     name varchar(50) not null,
@@ -8,6 +9,10 @@ CREATE TABLE users (
     role varchar(10)
 );
 
+-- 시퀀스 생성하기
+CREATE SEQUENCE USER_SEQ START WITH 1 INCREMENT BY 1;
+
+-- 게시판 테이블
 CREATE TABLE posts (
     id integer not null auto_increment,
     title varchar(200) not null,

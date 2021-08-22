@@ -1,4 +1,4 @@
-INSERT INTO users (id, name, email, role ) VALUES (1, 'hwkang93', 'k72780462@gmail.com', 'GUEST');
+--INSERT INTO users (id, name, email, role ) VALUES (1, 'hwkang93', 'k72780462@gmail.com', 'GUEST');
 
 INSERT INTO posts (title, contents, regist_email, regist_dt, update_dt) VALUES
     ('게시글1', '내용 내용 내용1', 'k72780462@gmail.com', NOW(), NOW()),

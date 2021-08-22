@@ -19,15 +19,5 @@ class PostServiceImplTest {
     @Test
     void findAll() {
         List<PostDto> postDtoList = postService.findAll();
-
-        System.out.println("postDtoList = " + postDtoList.size());
-    }
-
-    @Test
-    void enumTest() {
-        String roleStr = "GUEST";
-        Role role = Role.valueOf(roleStr);
-        System.out.println("role.getKey() = " + role.getKey());
-        System.out.println("role.getTitle() = " + role.getTitle());
     }
 }

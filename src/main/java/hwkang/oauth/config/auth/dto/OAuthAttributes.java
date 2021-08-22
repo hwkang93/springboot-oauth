@@ -1,7 +1,7 @@
 package hwkang.oauth.config.auth.dto;
 
 import hwkang.oauth.login.data.Role;
-import hwkang.oauth.login.data.User;
+import hwkang.oauth.login.data.UserEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -58,8 +58,8 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public User toEntity() {
-        return User.builder()
+    public UserEntity toEntity() {
+        return UserEntity.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)

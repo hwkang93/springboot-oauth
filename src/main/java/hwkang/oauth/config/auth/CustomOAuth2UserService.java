@@ -2,9 +2,11 @@ package hwkang.oauth.config.auth;
 
 import hwkang.oauth.config.auth.dto.OAuthAttributes;
 import hwkang.oauth.config.auth.dto.SessionUser;
-import hwkang.oauth.login.data.User;
+import hwkang.oauth.login.data.UserEntity;
 import hwkang.oauth.login.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -23,6 +25,7 @@ import java.util.Optional;
  */
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserRepository userRepository;
@@ -38,23 +41,24 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .getProviderDetails()
                 .getUserInfoEndpoint()
                 .getUserNameAttributeName();
-
+        log.info("*** OAuth User Info registrationId : {}, userNameAttributeName : {}", registrationId, userNameAttributeName);
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        UserEntity userEntity = saveOrUpdate(attributes);
+        httpSession.setAttribute("user", new SessionUser(userEntity));
 
-        return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+        return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(userEntity.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
+    private UserEntity saveOrUpdate(OAuthAttributes attributes) {
 
-        User user = userRepository.findByEmail(attributes.getEmail())
+        UserEntity userEntity = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
-
-        return userRepository.save(user);
+        log.info("*** Attributes : {}" , attributes);
+        log.info("*** User Attributes : {}" , attributes.toString());
+        return userRepository.save(userEntity);
     }
 }

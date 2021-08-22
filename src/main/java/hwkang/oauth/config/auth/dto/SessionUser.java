@@ -1,6 +1,6 @@
 package hwkang.oauth.config.auth.dto;
 
-import hwkang.oauth.login.data.User;
+import hwkang.oauth.login.data.UserEntity;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -22,10 +22,10 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(User user) {
-        this.name = user.getName();
-        this.email = user.getEmail();
-        this.picture = user.getPicture();
+    public SessionUser(UserEntity userEntity) {
+        this.name = userEntity.getName();
+        this.email = userEntity.getEmail();
+        this.picture = userEntity.getPicture();
     }
 
 }
