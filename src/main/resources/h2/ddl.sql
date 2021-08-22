@@ -22,3 +22,6 @@ CREATE TABLE posts (
     update_dt timestamp,
     primary key(id)
 );
+
+-- 시퀀스 생성하기
+CREATE SEQUENCE POST_SEQ START WITH 10 INCREMENT BY 10;

@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 /**
- *  구글 로그인 이후 가져온 사용자의 정보들을 기반으로 가입 및 정보수정, 세션 저장 등의 기능을 구현한 클래스
+ *  포털 로그인 이후 가져온 사용자의 정보들을 기반으로 가입 및 정보수정, 세션 저장 등의 기능을 구현한 클래스
  */
 @RequiredArgsConstructor
 @Service
@@ -41,7 +41,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .getProviderDetails()
                 .getUserInfoEndpoint()
                 .getUserNameAttributeName();
-        log.info("*** OAuth User Info registrationId : {}, userNameAttributeName : {}", registrationId, userNameAttributeName);
+
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         UserEntity userEntity = saveOrUpdate(attributes);
@@ -57,8 +57,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         UserEntity userEntity = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
-        log.info("*** Attributes : {}" , attributes);
-        log.info("*** User Attributes : {}" , attributes.toString());
+
         return userRepository.save(userEntity);
     }
 }
