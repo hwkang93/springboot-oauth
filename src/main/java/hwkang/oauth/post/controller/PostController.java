@@ -3,6 +3,7 @@ package hwkang.oauth.post.controller;
 import hwkang.oauth.config.auth.LoginUser;
 import hwkang.oauth.config.auth.dto.SessionUser;
 import hwkang.oauth.post.data.PostDto;
+import hwkang.oauth.post.data.PostSaveRequest;
 import hwkang.oauth.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class PostController {
     }
 
     @PostMapping
-    public String register(@LoginUser SessionUser sessionUser, @ModelAttribute PostDto postDto) {
+    public String register(@LoginUser SessionUser sessionUser, @ModelAttribute PostSaveRequest postDto) {
         PostDto paramDto = PostDto.builder()
                 .registEmail(sessionUser.getEmail())
                 .title(postDto.getTitle())

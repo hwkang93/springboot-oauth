@@ -2,6 +2,10 @@ package hwkang.oauth.post.data;
 
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -48,9 +52,11 @@ public class PostEntity {
     private String registEmail;
 
     @Column(nullable = false)
+    @CreationTimestamp
     private LocalDateTime registDt;
 
     @Column
+    @UpdateTimestamp
     private LocalDateTime updateDt;
 
     @Builder

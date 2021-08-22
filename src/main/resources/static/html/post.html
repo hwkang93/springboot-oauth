@@ -5,7 +5,7 @@
     <title>글 등록 화면</title>
 </head>
 <body>
-    <form name="registerForm" action="/post" method="post">
+    <form name="postDto" action="/post" method="post">
         <div>
             <p>글 제목</p>
             <input type="text" name="title" style="width: 100%">
@@ -23,7 +23,7 @@
     registerButton.addEventListener('click', register)
 
     function register() {
-        const registerForm = document.registerForm;
+        const registerForm = document.postDto;
         const title = registerForm.title.value;
         const contents = registerForm.contents.value;
 
